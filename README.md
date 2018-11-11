@@ -13,7 +13,7 @@ The simplest way is just:
 > HINT: Always make a backup of your config files before any action.
 
 ```bash
-cat tmux-grovbox-dark.conf >> ~/.tmux.conf
+cat tmux-gruvbox-dark.conf >> ~/.tmux.conf
 ```
 
 ## License
