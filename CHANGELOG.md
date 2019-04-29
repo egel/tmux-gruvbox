@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Added CHANGELOG file ([#9](https://github.com/egel/tmux-gruvbox/issues/9))
 - Added theme installable through TPM ([#4](https://github.com/egel/tmux-gruvbox/issues/4))
+- Added light-medium theme ([#3](https://github.com/egel/tmux-gruvbox/issues/3)]
 
 ### Changed
 ### Deprecated
