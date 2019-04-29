@@ -1,0 +1,10 @@
+# Editors
+.idea/
+
+# vim
+*.swp
+*.swo
+*~
+
+# Systems
+**/.DS_Store
