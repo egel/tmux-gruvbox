@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 ### Fixed
 - Fixed spelling in the installation script ([#2](https://github.com/egel/tmux-gruvbox/issues/2))
+- Fixed visual bugs in gruvbox dark theme after release ofi new tmux v2.9 ([#6](https://github.com/egel/tmux-gruvbox/issues/6))
 
 ### Security
 
