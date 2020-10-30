@@ -10,9 +10,9 @@ get_theme() {
 	local option_value
   option_value=$(tmux show-option -gqv "$option")
 	if [ -z "$option_value" ]; then
-		print "$default_value"
+		echo "$default_value"
 	else
-		print "$option_value"
+		echo "$option_value"
 	fi
 }
 
