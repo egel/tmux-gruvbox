@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added zoom indication when pane is maximiezed ([#17](https://github.com/egel/tmux-gruvbox/issues/17))
 
 ### Changed
+- Improved displaying window-status according AKSoo suggestions ([#20](https://github.com/egel/tmux-gruvbox/issues/20))
+
 ### Deprecated
 ### Removed
 ### Fixed
