@@ -11,13 +11,13 @@ Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev
 -->
 
 <div align="center">
-    <a href="./docs/assets/img/gruvbox-dark-and-light theme structure.png" title="Grovbox dark and light themes for Tmux">
-        <img src="./docs/assets/img/gruvbox-dark-and-light theme structure@0.5x.png"
-          title="Grovbox dark and light themes for Tmux"
-          width="100%"
-          height="auto"
-          style="max-width: 800px; text-align: center; border-radius: 12px; overflow:hidden;"  />
-    </a>
+  <a href="./docs/assets/img/gruvbox-dark-and-light-theme-structure.png" title="Grovbox dark and light themes for Tmux">
+    <img src="./docs/assets/img/gruvbox-dark-and-light-theme-structure@0.5x.png"
+      title="Grovbox dark and light themes for Tmux"
+      width="100%"
+      height="auto"
+      style="max-width: 800px; text-align: center; border-radius: 12px; overflow:hidden;"  />
+  </a>
 </div>
 
 > Screenshot made from macOS [alacritty][github-alacritty] terminal with xterm-256color and [Hack Nerd Font Regular][github-nerd-fonts].<br/>
@@ -25,11 +25,19 @@ Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev
 
 ## Installation
 
+**Available Themes**
+
+- [`dark`](./docs/assets/img/gruvbox-dark-theme.png)
+- [`light`](./docs/assets/img/gruvbox-light-theme.png)
+- `dark-transparent` (experimental)
+- `light-transparent` (experimental)
+
 ### Install manually
 
 The simplest way is just:
 
-> HINT: Always make a backup of your config files before any action.
+> [!TIP]
+> Always make a backup of your config files before any action.
 
 ```bash
 cat tmux-gruvbox-dark.conf >> ~/.tmux.conf
@@ -41,7 +49,7 @@ Add plugin to the list of TPM plugins in `.tmux.conf` and select desired theme.
 
 ```bash
 set -g @plugin 'egel/tmux-gruvbox'
-set -g @tmux-gruvbox 'dark' # or 'light'
+set -g @tmux-gruvbox 'dark' # or 'light', 'dark-transparent', 'light-transparent'
 ```
 
 Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated with the theme at this point.
