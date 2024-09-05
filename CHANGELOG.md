@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Added light and dark transparent themes [#18](https://github.com/egel/tmux-gruvbox/issues/18)
 - Added editorconfig
 
 ### Changed
