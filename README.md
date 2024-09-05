@@ -54,6 +54,36 @@ set -g @tmux-gruvbox 'dark' # or 'light', 'dark-transparent', 'light-transparent
 
 Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated with the theme at this point.
 
+## Development
+
+To run project locally pull the repo to desired place
+
+```bash
+cd $HOME/privatespace/
+git clone ...
+```
+
+and in `~/.tmux.conf` set
+
+```bash
+# cd to tmux plugin directory
+cd ~/.tmux/plugins/
+
+# create simlink to
+ln -sf $HOME/privatespace/tmux-gruvbox/ tmux-gruvbox
+
+# set desired options...
+set -g @tmux-gruvbox 'dark-transparent'
+```
+
+### Linters & formatters
+
+To keep the files clean we use few program to help us achieve it:
+
+1.  Editorconfig (make sure your editor have it)
+2.  Markdown (prettier/prettierd)
+3.  Shell (shellcheck, shfmt)
+
 ## License
 
 GPLv3 - Maciej Sypień
