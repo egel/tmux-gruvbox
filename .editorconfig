@@ -19,3 +19,19 @@ trim_trailing_whitespace = false
 # windows shell scripts
 [*.{cmd,bat,ps1}]
 end_of_line = crlf
+
+[*.sh]
+indent_style = space
+indent_size = 4
+
+shell_variant      = posix # like -ln=posix
+binary_next_line   = true  # like -bn
+switch_case_indent = true  # like -ci
+space_redirects    = true  # like -sr
+keep_padding       = true  # like -kp
+function_next_line = true  # like -fn
+never_split        = true  # like -ns
+
+[Makefile]
+indent_style = tab
+indent_size = 8
