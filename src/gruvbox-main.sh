@@ -11,71 +11,71 @@ declate -a TMUX_CMDS
 # load libraries
 source "${CURRENT_DIR}/src/helper_methods.sh"
 source "${CURRENT_DIR}/src/tmux_utils.sh"
-source "${CURRENT_DIR}/src/theme_gruvbox_dark.sh"
+source "${CURRENT_DIR}/src/theme_gruvbox_dark256.sh"
+source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
 
 readonly TMUX_GRUVBOX="@tmux-gruvbox"
-readonly TMUX_GRUVBOX_THEME="@tmux-gruvbox-theme"
-readonly TMUX_GRUVBOX_LEFT_STATUS="@tmux-gruvbox-left-status"
-readonly TMUX_GRUVBOX_RIGHT_STAUTS="@tmux-gruvbox-right-status"
-readonly TMUX_GRUVBOX_WINDOW_STATUS_CURRENT_FORMAT="@tmux-gruvbox-window-status-current-format"
-readonly TMUX_GRUVBOX_WINDOW_STATUS_FORMAT="@tmux-gruvbox-window-status-format"
+readonly TMUX_GRUVBOX_STATUSBAR_ALPHA="@tmux-gruvbox-statusbar-alpha"
+readonly TMUX_GRUVBOX_LEFT_STATUS_A="@tmux-gruvbox-left-status-a"
+readonly TMUX_GRUVBOX_RIGHT_STAUTS_X="@tmux-gruvbox-right-status-x"
+readonly TMUX_GRUVBOX_RIGHT_STAUTS_Y="@tmux-gruvbox-right-status-y"
+readonly TMUX_GRUVBOX_RIGHT_STAUTS_Z="@tmux-gruvbox-right-status-z"
 
-# define the reference names for further custom options
-tmux_append_seto "${TMUX_GRUVBOX}"
-tmux_append_seto "${TMUX_GRUVBOX_THEME}"
-tmux_append_seto "${TMUX_GRUVBOX_LEFT_STATUS}"
-tmux_append_seto "${TMUX_GRUVBOX_RIGHT_STAUTS}"
-tmux_append_seto "${TMUX_GRUVBOX_WINDOW_STATUS_CURRENT_FORMAT}"
-tmux_append_seto "${TMUX_GRUVBOX_WINDOW_STATUS_FORMAT}"
-
-print_array TMUX_CMDS  # print options
-tmux "${TMUX_CMDS[@]}" # execute options
-TMUX_CMDS=()           # clean
+# define simple theme options (no color interpolation required)
+DEFAULT_THEME="dark"
+DEFAULT_STATUSBAR_ALPHA=false
+# defaults for theme option (with color interpolation)
+DEFAULT_LEFT_STATUS_A='#S'
+DEFAULT_RIGHT_STATUS_X='%Y-%m-%d'
+DEFAULT_RIGHT_STATUS_Y='%H:%M'
+DEFAULT_RIGHT_STATUS_Z='#h'
 
 main() {
-  local _theme
-  _theme=$(tmux_get_option "$TMUX_GRUVBOX" "$DEFAULT_THEME")
+    TMUX_CMDS=() # clear
 
-  # load proper palette for the theme soon to avoid additional variable interpolation
-  case $_theme in
-  light)
-    source "${CURRENT_DIR}/src/palette_gruvbox_light.sh"
-    ;;
-  dark | *)
-    source "${CURRENT_DIR}/src/palette_gruvbox_dark.sh"
-    ;;
-  esac
+    # load proper palette for the theme asap to avoid additional variable interpolation
+    local _theme
+    _theme=$(tmux_get_option "${TMUX_GRUVBOX}" "${DEFAULT_THEME}")
+    _statusbar_alpha=$(tmux_get_option "${TMUX_GRUVBOX_STATUSBAR_ALPHA}" "${DEFAULT_STATUSBAR_ALPHA}")
 
-  # defaults for theme option
-  DEFAULT_THEME="dark"
-  DEFAULT_LEFT_STATUS="#[bg=${col_bg3},fg=${col_fg3}] #S #[bg=${col_bg1},fg=${col_bg3},nobold,noitalics,nounderscore]"
-  DEFAULT_RIGHT_STATUS="#[bg=${col_bg1},fg=${col_bg2},nobold,nounderscore,noitalics]#[bg=${col_bg2},fg=${col_fg4}] %Y-%m-%d  %H:%M #[bg=${col_bg2},fg=${col_fg3},nobold,noitalics,nounderscore]#[bg=${col_fg3},fg=${col_bg1}] #h #{tmux_mode_indicator}"
-  DEFAULT_WINDOW_STATUS_CURRENT_FORMAT="#[bg=${col_yellow2},fg=${col_bg1},nobold,noitalics,nounderscore]#[bg=${col_yellow2},fg=${col_bg2}] #I #[bg=${col_yellow2},fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #[bg=${col_bg1},fg=${col_yellow2},nobold,noitalics,nounderscore]"
-  DEFAULT_WINDOW_STATUS_FORMAT="#[bg=${col_bg2},fg=${col_bg1},noitalics]#[bg=${col_bg2},fg=${col_fg1}] #I #[bg=${col_bg2},fg=${col_fg1}] #W #[bg=${col_bg1},fg=${col_bg2},noitalics]"
+    case "$_theme" in
+    light | light256)
+        source "${CURRENT_DIR}/src/palette_gruvbox_light.sh"
+        source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
+        ;;
+    dark | dark256 | *)
+        source "${CURRENT_DIR}/src/palette_gruvbox_dark.sh"
+        source "${CURRENT_DIR}/src/theme_gruvbox_dark256.sh"
+        ;;
+    esac
 
-  _status_left=$(tmux_get_option "$TMUX_GRUVBOX_LEFT_STATUS" "$DEFAULT_LEFT_STATUS")
-  _status_right=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS" "$DEFAULT_RIGHT_STATUS")
-  _window_status_current_format=$(tmux_get_option "$TMUX_GRUVBOX_WINDOW_STATUS_CURRENT_FORMAT" "$DEFAULT_WINDOW_STATUS_CURRENT_FORMAT")
-  _window_status_format=$(tmux_get_option "$TMUX_GRUVBOX_WINDOW_STATUS_FORMAT" "$DEFAULT_WINDOW_STATUS_FORMAT")
+    local _status_left _status_right _window_status_current_format _window_status_format
+    _status_left_a=$(tmux_get_option "$TMUX_GRUVBOX_LEFT_STATUS_A" "$DEFAULT_LEFT_STATUS_A")
+    _status_right_x=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_X" "$DEFAULT_RIGHT_STATUS_X")
+    _status_right_y=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_Y" "$DEFAULT_RIGHT_STATUS_Y")
+    _status_right_z=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_Z" "$DEFAULT_RIGHT_STATUS_Z")
 
-  theme_args=(
-    "$_status_left"
-    "$_status_right"
-    "$_window_status_current_format"
-    "$_window_status_format"
-  )
+    theme_args=(
+        "$_status_left_a"
+        "$_status_right_x"
+        "$_status_right_y"
+        "$_status_right_z"
+        "$_statusbar_alpha"
+    )
 
-  case $_theme in
-  light)
-    set_light_theme "${theme_args[@]}"
-    ;;
-  dark | *)
-    set_dark_theme "${theme_args[@]}"
-    ;;
-  esac
+    case $_theme in
+    light | light256)
+        theme_set_light_256 "${theme_args[@]}"
+        ;;
+    dark | dark256 | *)
+        theme_set_dark_256 "${theme_args[@]}"
+        ;;
+    esac
 
-  # execute commands with tmux as array of options
-  tmux "${TMUX_CMDS[@]}"
+    # execute commands with tmux as array of options
+    tmux "${TMUX_CMDS[@]}"
 }
 
 main "$@"
+
+# vi: ft=bash
