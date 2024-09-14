@@ -85,5 +85,3 @@ main() {
 }
 
 main "$@"
-
-# vi: ft=bash
