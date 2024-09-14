@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-THEME_OPTION="@tmux-gruvbox"
-DEFAULT_THEME="dark"
+SCRIPT_SRC="$(dirname "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}")"
+readonly SCRIPT_SRC
+CURRENT_DIR=$(cd "${SCRIPT_SRC}" >/dev/null 2>&1 && pwd)
+readonly CURRENT_DIR
+readonly THEME_OPTION="@tmux-gruvbox"
+readonly DEFAULT_THEME="dark"
 
 get_theme() {
   local option="$1"
@@ -24,4 +27,4 @@ main() {
 
 main "$@"
 
-# vi: ft=bash
+# vim: ai et ft=bash
