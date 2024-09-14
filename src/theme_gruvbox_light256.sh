@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# themes may use different colors in sets therefore we setup dark and light separately
+# Themes may use different colors in sets therefore we setup dark and light
+# separately.
+#
+# shellcheck disable=SC2154
 theme_set_light_256() {
   local _left_status_value _right_status_value _window_status_current_format _window_status_format
   _left_status_a=$1

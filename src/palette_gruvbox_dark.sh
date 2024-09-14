@@ -11,6 +11,7 @@
 #
 # The names of colors used from https://github.com/morhetz/gruvbox
 
+# shellcheck disable=2034 # ignored as this file only contains var definitions
 col_bg=colour235
 col_bg0_h=colour234
 col_bg0=colour235

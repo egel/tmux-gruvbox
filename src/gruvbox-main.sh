@@ -9,9 +9,13 @@ readonly CURRENT_DIR
 declate -a TMUX_CMDS
 
 # load libraries
+# shellcheck disable=1091
 source "${CURRENT_DIR}/src/helper_methods.sh"
+# shellcheck disable=1091
 source "${CURRENT_DIR}/src/tmux_utils.sh"
+# shellcheck disable=1091
 source "${CURRENT_DIR}/src/theme_gruvbox_dark256.sh"
+# shellcheck disable=1091
 source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
 
 readonly TMUX_GRUVBOX="@tmux-gruvbox"
@@ -40,11 +44,15 @@ main() {
 
     case "$_theme" in
     light | light256)
+        # shellcheck disable=1091
         source "${CURRENT_DIR}/src/palette_gruvbox_light.sh"
+        # shellcheck disable=1091
         source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
         ;;
     dark | dark256 | *)
+        # shellcheck disable=1091
         source "${CURRENT_DIR}/src/palette_gruvbox_dark.sh"
+        # shellcheck disable=1091
         source "${CURRENT_DIR}/src/theme_gruvbox_dark256.sh"
         ;;
     esac
