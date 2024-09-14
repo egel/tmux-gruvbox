@@ -56,25 +56,33 @@ Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated 
 
 ## Development
 
-To run project locally pull the repo to desired place
+To run project locally:
 
-```bash
-cd $HOME/privatespace/
-git clone ...
-```
+1.  clone the repo to desired place
 
-and in `~/.tmux.conf` set
+    ```bash
+    cd $HOME/projects/
+    git clone ...
+    ```
 
-```bash
-# cd to tmux plugin directory
-cd ~/.tmux/plugins/
+1.  create symlink in plugin dir to the cloned repo:
 
-# create simlink to
-ln -sf $HOME/privatespace/tmux-gruvbox/ tmux-gruvbox
+    ```bash
+    # cd to tmux plugin directory
+    cd ~/.tmux/plugins/
 
-# set desired options...
-set -g @tmux-gruvbox 'dark-transparent'
-```
+    # create simlink to cloned repo
+    ln -sf $HOME/projects/tmux-gruvbox/ tmux-gruvbox
+    ```
+
+1.  and in `~/.tmux.conf` set
+
+    ```bash
+    # add plugin
+    set -g @plugin 'egel/tmux-gruvbox'
+    # set desired options...
+    set -g @tmux-gruvbox 'dark'
+    ```
 
 ### Linters & formatters
 
