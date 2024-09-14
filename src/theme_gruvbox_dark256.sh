@@ -68,8 +68,12 @@ theme_set_dark_256() {
   tmux_append_seto "status-right" "#[bg=${_status_right_bg},fg=${col_bg2},nobold,nounderscore,noitalics]#[bg=${col_bg2},fg=${col_fg4}] ${_right_status_x}  ${_right_status_y} #[bg=${col_bg2},fg=${col_fg3},nobold,noitalics,nounderscore]#[bg=${col_fg3},fg=${col_bg1}] ${_right_status_z}"
 
   # current window
-  tmux_append_setwo "window-status-current-format" "#[bg=${col_yellow2},fg=${col_bg1},nobold,noitalics,nounderscore]#[bg=${col_yellow2},fg=${col_bg2}] #I #[bg=${col_yellow2},fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #{?window_end_flag,#[bg=default],#[bg=colour237]}#[fg=${col_yellow2},nobold,noitalics,nounderscore]"
+  local _current_window_status_format_bg=${col_bg1}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _current_window_status_format_bg="default"; fi
+  tmux_append_setwo "window-status-current-format" "#[bg=${col_yellow2},fg=${col_bg1},nobold,noitalics,nounderscore]#[bg=${col_yellow2},fg=${col_bg2}] #I #[bg=${col_yellow2},fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #{?window_end_flag,#[bg=${_current_window_status_format_bg}],#[bg=${col_bg1}]}#[fg=${col_yellow2},nobold,noitalics,nounderscore]"
 
   # default window
-  tmux_append_setwo "window-status-format" "#[bg=${col_bg2},fg=${col_bg1},noitalics]#[bg=${col_bg2},fg=${col_fg1}] #I #[bg=${col_bg2},fg=${col_fg1}] #W #{?window_end_flag,#[bg=default],#[bg=colour237]}#[fg=${col_bg2},noitalics]"
+  local _default_window_status_format_bg=${col_bg1}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _default_window_status_format_bg="default"; fi
+  tmux_append_setwo "window-status-format" "#[bg=${col_bg2},fg=${col_bg1},noitalics]#[bg=${col_bg2},fg=${col_fg1}] #I #[bg=${col_bg2},fg=${col_fg1}] #W #{?window_end_flag,#[bg=${_default_window_status_format_bg}],#[bg=${col_bg1}]}#[fg=${col_bg2},noitalics]"
 }
