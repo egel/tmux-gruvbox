@@ -1,0 +1,22 @@
+name: GitHub Actions
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  lint-shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install shellcheck
+        run: sudo apt-get install -y shellcheck
+      - name: checkout repo
+        uses: actions/checkout@main
+      - name: lint files against shellcheck
+        run: make lint_shellcheck
+  lint-shfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install shfmt
+        run: sudo apt-get install -y shfmt
+      - name: checkout repo
+        uses: actions/checkout@main
+      - name: lint files against shfmt
+        run: make lint_shfmt
