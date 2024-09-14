@@ -20,9 +20,9 @@ trim_trailing_whitespace = false
 [*.{cmd,bat,ps1}]
 end_of_line = crlf
 
-[*.sh]
+[*.{sh,tmux}]
 indent_style = space
-indent_size = 4
+indent_size = 2
 
 shell_variant      = posix # like -ln=posix
 binary_next_line   = true  # like -bn
