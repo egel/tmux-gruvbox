@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##########################
-# gruvbox dark pallete
+# gruvbox light pallete
 ##########################
 
 ####
