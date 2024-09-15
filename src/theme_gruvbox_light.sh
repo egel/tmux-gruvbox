@@ -4,7 +4,7 @@
 # separately.
 #
 # shellcheck disable=SC2154
-theme_set_light_256() {
+theme_set_light() {
   local _left_status_value _right_status_value _window_status_current_format _window_status_format
   _left_status_a=$1
   _right_status_x=$2

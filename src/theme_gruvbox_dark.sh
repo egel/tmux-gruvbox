@@ -4,7 +4,7 @@
 # separately.
 #
 # shellcheck disable=SC2154
-theme_set_dark_256() {
+theme_set_dark() {
   local _left_status_a _right_status_x _right_status_y _right_status_z _statusbar_alpha
   _left_status_a=$1
   _right_status_x=$2

@@ -13,10 +13,6 @@ declate -a TMUX_CMDS
 source "${CURRENT_DIR}/src/helper_methods.sh"
 # shellcheck disable=1091
 source "${CURRENT_DIR}/src/tmux_utils.sh"
-# shellcheck disable=1091
-source "${CURRENT_DIR}/src/theme_gruvbox_dark256.sh"
-# shellcheck disable=1091
-source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
 
 readonly TMUX_GRUVBOX="@tmux-gruvbox"
 readonly TMUX_GRUVBOX_STATUSBAR_ALPHA="@tmux-gruvbox-statusbar-alpha"
@@ -45,15 +41,15 @@ main() {
   case "$_theme" in
   light | light256)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_light.sh"
+    source "${CURRENT_DIR}/src/palette_gruvbox_light256.sh"
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
+    source "${CURRENT_DIR}/src/theme_gruvbox_light.sh"
     ;;
   dark | dark256 | *)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_dark.sh"
+    source "${CURRENT_DIR}/src/palette_gruvbox_dark256.sh"
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/theme_gruvbox_dark256.sh"
+    source "${CURRENT_DIR}/src/theme_gruvbox_dark.sh"
     ;;
   esac
 
@@ -73,10 +69,10 @@ main() {
 
   case $_theme in
   light | light256)
-    theme_set_light_256 "${theme_args[@]}"
+    theme_set_light "${theme_args[@]}"
     ;;
   dark | dark256 | *)
-    theme_set_dark_256 "${theme_args[@]}"
+    theme_set_dark "${theme_args[@]}"
     ;;
   esac
 
