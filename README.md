@@ -25,60 +25,126 @@ Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev
 
 ## Installation
 
-**Available Themes**
+### Install via [TPM][github-tpm] (recommended)
 
-- [`dark`](./docs/assets/img/gruvbox-dark-theme.png)
-- [`light`](./docs/assets/img/gruvbox-light-theme.png)
-- `dark-transparent` (experimental)
-- `light-transparent` (experimental)
-
-### Install manually
-
-The simplest way is just:
-
-> [!TIP]
-> Always make a backup of your config files before any action.
+Add plugin at the top list of TPM plugins in `.tmux.conf` and select desired theme.
 
 ```bash
-cat tmux-gruvbox-dark.conf >> ~/.tmux.conf
-```
-
-### Install through [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
-
-Add plugin to the list of TPM plugins in `.tmux.conf` and select desired theme.
-
-```bash
+# ~/.tmux.conf
 set -g @plugin 'egel/tmux-gruvbox'
-set -g @tmux-gruvbox 'dark' # or 'light', 'dark-transparent', 'light-transparent'
+# set desired options...
+set -g @tmux-gruvbox 'dark' # or 'light'
 ```
 
 Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated with the theme at this point.
+
+### Install manually
+
+1.  Clone the project to desired location
+
+    > ![TIP] If you do not have github account [download](https://github.com/egel/tmux-gruvbox/archive/refs/heads/main.zip) it and unzip.
+
+    ```bash
+    cd ~/projects/
+    git clone ...
+    ```
+
+1.  Add theme at to top of your `~/.tmux.conf` config.
+
+    ```bash
+    # ~/.tmux.conf
+    run ~/projects/tmux-gruvbox/tmux-gruvbox.tmux
+    # set desired options...
+    set -g @tmux-gruvbox 'dark' # or light
+    ```
+
+## Configuration options
+
+### Theme
+
+- default value: `dark256`
+- available themes:
+  - [`dark256`](./docs/assets/img/gruvbox-dark-theme.png)
+  - [`light256`](./docs/assets/img/gruvbox-light-theme.png)
+
+```bash
+set -g @tmux-gruvbox 'dark256'
+```
+
+### Transparent status-bar
+
+- default value: `'false'`
+- tmux >= 3.2 (experimental)
+
+```bash
+set -g @tmux-gruvbox-statusbar-alpha 'true'
+```
+
+### Left Status (Section A)
+
+- default value: `'#S'`
+
+```bash
+set -g @tmux-gruvbox-left-status-a
+```
+
+### Right Status (Section X)
+
+- default value: `'%Y-%m-%d'`
+
+This section is customizable for user, and by default contains current date.
+
+```bash
+set -g @tmux-gruvbox-right-status-x
+```
+
+### Right Status (Section Y)
+
+- default value: `'%H:%M'`
+
+This section is customizable for user, and by default contains current time.
+
+```bash
+# set different time format
+set -g @tmux-gruvbox-right-status-y '%H:%M'
+```
+
+### Right Status (Section Z)
+
+- default value: `'#h'`
+
+This section is customizable for user, and by default contains hostname.
+
+```bash
+# enhance this section with other plugin
+set -g @tmux-gruvbox-right-status-z '#h #{tmux_mode_indicator} '
+```
 
 ## Development
 
 To run project locally:
 
-1.  clone the repo to desired place
+1.  clone the repository to desired place
 
     ```bash
     cd $HOME/projects/
     git clone ...
     ```
 
-1.  create symlink in plugin dir to the cloned repo:
+1.  create a symlink to the cloned repository (best in the standard [TPM][github-tpm] plugin directory):
 
     ```bash
     # cd to tmux plugin directory
     cd ~/.tmux/plugins/
 
-    # create simlink to cloned repo
+    # create symlink to cloned repo
     ln -sf $HOME/projects/tmux-gruvbox/ tmux-gruvbox
     ```
 
 1.  and in `~/.tmux.conf` set
 
     ```bash
-    # add plugin
+    # ~/.tmux.conf
     set -g @plugin 'egel/tmux-gruvbox'
     # set desired options...
     set -g @tmux-gruvbox 'dark'
@@ -101,6 +167,7 @@ GPLv3 - Maciej Sypień
 [github-hack]: https://github.com/chrissimpkins/Hack
 [github-nerd-fonts]: https://github.com/ryanoasis/nerd-fonts
 [github-alacritty]: https://github.com/alacritty/alacritty
+[github-tpm]: https://github.com/tmux-plugins/tpm
 [tmux-color-solarized]: https://github.com/seebi/tmux-colors-solarized
 [pexcel-1]: https://www.pexels.com/photo/urban-photo-of-an-alley-2411688/
 [pexcel-2]: https://www.pexels.com/photo/lights-hanging-above-the-alley-in-a-city-at-night-27044195/
