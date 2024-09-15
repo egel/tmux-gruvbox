@@ -41,7 +41,7 @@ main() {
   case "$_theme" in
   light)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_light256.sh"
+    source "${CURRENT_DIR}/src/palette_gruvbox_light.sh"
     # shellcheck disable=1091
     source "${CURRENT_DIR}/src/theme_gruvbox_light.sh"
     ;;
@@ -53,7 +53,7 @@ main() {
     ;;
   dark)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_dark256.sh"
+    source "${CURRENT_DIR}/src/palette_gruvbox_dark.sh"
     # shellcheck disable=1091
     source "${CURRENT_DIR}/src/theme_gruvbox_dark.sh"
     ;;
