@@ -11,8 +11,8 @@ Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev
 -->
 
 <div align="center">
-  <a href="./docs/assets/img/gruvbox-dark-and-light-theme-structure.png" title="Grovbox dark and light themes for Tmux">
-    <img src="./docs/assets/img/gruvbox-dark-and-light-theme-structure@0.5x.png"
+  <a href="https://i.imgur.com/uGyGwlC.png" title="Grovbox dark and light themes for Tmux">
+    <img src="https://i.imgur.com/p6lUnzb.png"
       title="Grovbox dark and light themes for Tmux"
       width="100%"
       height="auto"
