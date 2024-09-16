@@ -5,25 +5,32 @@
 #
 # shellcheck disable=SC2154
 theme_set_light256() {
-  local _left_status_value _right_status_value _window_status_current_format _window_status_format
+  local _left_status_a _right_status_x _right_status_y _right_status_z _statusbar_alpha
   _left_status_a=$1
   _right_status_x=$2
   _right_status_y=$3
   _right_status_z=$4
+  _statusbar_alpha=$5
 
   tmux_append_seto "status" "on"
 
-  # default statusbar color
-  tmux_append_seto "status-style" "bg=${col_bg1},fg=${col_fg1}"
+  # default statusbar bg color
+  local _statusbar_bg="${col_bg2}"
+  if [[ "$_statusbar_alpha" == "true" ]]; then _statusbar_bg="default"; fi
+  tmux_append_seto "status-style" "bg=${_statusbar_bg},fg=${col_fg1}"
 
   # default window title colors
-  tmux_append_setwo "window-status-style" "bg=${col_yellow2},fg=${col_bg1}"
+  local _window_title_bg=${col_yellow2}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _window_title_bg="default"; fi
+  tmux_append_setwo "window-status-style" "bg=${_window_title_bg},fg=${col_bg1}"
 
   # default window with an activity alert
   tmux_append_setwo "window-status-activity-style" "bg=${col_bg1},fg=${col_fg3}"
 
   # active window title colors
-  tmux_append_setwo "window-status-current-style" "bg=default,fg=${col_bg1}" # TODO cosider removing red!
+  local _active_window_title_bg=${col_yellow2}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _active_window_title_bg="default"; fi
+  tmux_append_setwo "window-status-current-style" "bg=${_active_window_title_bg},fg=${col_bg1}" # TODO cosider removing red!
 
   # pane border
   tmux_append_seto "pane-active-border-style" "fg=${col_fg2}"
@@ -53,9 +60,20 @@ theme_set_light256() {
   tmux_append_seto "status-right-length" "80"
   tmux_append_setwo "window-status-separator" ""
 
-  tmux_append_seto "status-left" "#[bg=${col_bg3},fg=${col_fg3}] ${_left_status_a} #[bg=${col_bg1},fg=${col_bg3},nobold,noitalics,nounderscore]"
-  tmux_append_seto "status-right" "#[bg=${col_bg1},fg=${col_bg2},nobold,nounderscore,noitalics]#[bg=${col_bg2},fg=${col_fg4}] ${_right_status_x}  ${_right_status_y} #[bg=${col_bg2},fg=${col_fg3},nobold,noitalics,nounderscore]#[bg=${col_fg3},fg=${col_bg1}] ${_right_status_z}"
+  tmux_append_seto "status-left" "#[bg=${col_fg2},fg=${col_bg1}] ${_left_status_a} #[bg=${col_bg2},fg=${col_fg2},nobold,noitalics,nounderscore]"
 
-  tmux_append_setwo "window-status-current-format" "#[bg=${col_yellow2},fg=${col_bg1},nobold,noitalics,nounderscore]#[bg=${col_yellow2},fg=${col_bg2}] #I #[bg=${col_yellow2},fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #[bg=${col_bg1},fg=${col_yellow2},nobold,noitalics,nounderscore]"
-  tmux_append_setwo "window-status-format" "#[bg=${col_bg2},fg=${col_bg1},noitalics]#[bg=${col_bg2},fg=${col_fg1}] #I #[bg=${col_bg2},fg=${col_fg1}] #W #[bg=${col_bg1},fg=${col_bg2},noitalics]"
+  # right status
+  local _status_right_bg=${col_bg2}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _status_right_bg="default"; fi
+  tmux_append_seto "status-right" "#[bg=${_status_right_bg},fg=${col_fg4},nobold,nounderscore,noitalics]#[bg=${col_fg4},fg=${col_bg1}] ${_right_status_x}  ${_right_status_y} #[bg=${col_fg4},fg=${col_fg2},nobold,noitalics,nounderscore]#[bg=${col_fg2},fg=${col_bg1}] ${_right_status_z}"
+
+  # current window
+  local _current_window_status_format_bg=${col_bg2}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _current_window_status_format_bg="default"; fi
+  tmux_append_setwo "window-status-current-format" "#[bg=${col_yellow},fg=${col_bg2},nobold,noitalics,nounderscore]#[bg=${col_yellow},fg=${col_fg1}] #I #[bg=${col_yellow},fg=${col_fg1},bold] #W#{?window_zoomed_flag,*Z,} #{?window_end_flag,#[bg=${_current_window_status_format_bg}],#[bg=${col_bg2}]}#[fg=${col_yellow},nobold,noitalics,nounderscore]"
+
+  # default window
+  local _default_window_status_format_bg=${col_bg2}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _default_window_status_format_bg="default"; fi
+  tmux_append_setwo "window-status-format" "#[bg=${col_bg3},fg=${col_bg2},noitalics]#[bg=${col_bg3},fg=${col_fg2}] #I #[bg=${col_bg3},fg=${col_fg2}] #W #{?window_end_flag,#[bg=${_default_window_status_format_bg}],#[bg=${col_bg2}]}#[fg=${col_bg3},noitalics]"
 }
