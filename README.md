@@ -64,11 +64,13 @@ Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated 
 
 - default value: `dark256`
 - available themes:
-  - [`dark256`](./docs/assets/img/gruvbox-dark-theme.png)
-  - [`light256`](./docs/assets/img/gruvbox-light-theme.png)
+  - `dark` ([preview]())
+  - `light` ()
+  - `dark256` ([preview]())
+  - `light256` ([preview](https://i.imgur.com/fvpdRjg.png))
 
 ```bash
-set -g @tmux-gruvbox 'dark256'
+set -g @tmux-gruvbox 'dark'
 ```
 
 ### Transparent status-bar
@@ -95,7 +97,13 @@ set -g @tmux-gruvbox-left-status-a
 This section is customizable for user, and by default contains current date.
 
 ```bash
-set -g @tmux-gruvbox-right-status-x
+# set date in US notation
+set -g @tmux-gruvbox-right-status-x '%m/%d/%Y' # e.g.: 01/31/2024
+```
+
+```bash
+# or set date in EU notation
+set -g @tmux-gruvbox-right-status-x '%d.%m.%Y' # e.g.: 30.01.2024
 ```
 
 ### Right Status (Section Y)
@@ -105,8 +113,8 @@ set -g @tmux-gruvbox-right-status-x
 This section is customizable for user, and by default contains current time.
 
 ```bash
-# set different time format
-set -g @tmux-gruvbox-right-status-y '%H:%M'
+# set US time format
+set -g @tmux-gruvbox-right-status-y '%I:%M %p' # 09:54 PM
 ```
 
 ### Right Status (Section Z)
@@ -116,9 +124,12 @@ set -g @tmux-gruvbox-right-status-y '%H:%M'
 This section is customizable for user, and by default contains hostname.
 
 ```bash
-# enhance this section with other plugin
-set -g @tmux-gruvbox-right-status-z '#h #{tmux_mode_indicator} '
+# display hostname and enhance section with other plugin
+set -g @tmux-gruvbox-right-status-z '#h #{tmux_mode_indicator}'
 ```
+
+> ![TIP]: make sure the themes' settings are defined before all other plugins,
+> otherwise plugin's content may not be displayed correctly in by the theme.
 
 ## Development
 
@@ -171,3 +182,8 @@ GPLv3 - Maciej Sypień
 [tmux-color-solarized]: https://github.com/seebi/tmux-colors-solarized
 [pexcel-1]: https://www.pexels.com/photo/urban-photo-of-an-alley-2411688/
 [pexcel-2]: https://www.pexels.com/photo/lights-hanging-above-the-alley-in-a-city-at-night-27044195/
+[imgur-img-gruvbox-dark-light-comparision-1x]: https://i.imgur.com/uGyGwlC.png
+[imgur-img-gruvbox-dark-light-comparision-0.5x]: https://i.imgur.com/p6lUnzb.png
+[imgur-img-gruvbox-dark-16bit-1x]: https://i.imgur.com/ae88LQI.png
+[imgur-img-gruvbox-dark256-1x]: https://i.imgur.com/kzQTTCa.png
+[imgur-img-gruvbox-light-1x]: https://i.imgur.com/fvpdRjg.png
