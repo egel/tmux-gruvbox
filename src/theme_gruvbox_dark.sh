@@ -28,9 +28,9 @@ theme_set_dark() {
   tmux_append_setwo "window-status-activity-style" "bg=${col_bg1},fg=${col_fg3}"
 
   # active window title colors
-  local active_window_title_bg=${col_yellow2}
-  if [[ "$_statusbar_alpha" == "true" ]]; then active_window_title_bg="default"; fi
-  tmux_append_setwo "window-status-current-style" "bg=${active_window_title_bg},fg=${col_bg1}" # TODO cosider removing red!
+  local _active_window_title_bg=${col_yellow2}
+  if [[ "$_statusbar_alpha" == "true" ]]; then _active_window_title_bg="default"; fi
+  tmux_append_setwo "window-status-current-style" "bg=${_active_window_title_bg},fg=${col_bg1}" # TODO cosider removing red!
 
   # pane border
   tmux_append_seto "pane-active-border-style" "fg=${col_fg2}"

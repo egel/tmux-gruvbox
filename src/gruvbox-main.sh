@@ -49,7 +49,7 @@ main() {
     # shellcheck disable=1091
     source "${CURRENT_DIR}/src/palette_gruvbox_light256.sh"
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/theme_gruvbox_light.sh"
+    source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
     ;;
   dark)
     # shellcheck disable=1091
@@ -80,7 +80,11 @@ main() {
   )
 
   case $_theme in
-  light | light256)
+  light256)
+    # light256 have slightly different colors placement then regular light 16-bit
+    theme_set_light256 "${theme_args[@]}"
+    ;;
+  light)
     theme_set_light "${theme_args[@]}"
     ;;
   dark | dark256 | *)
