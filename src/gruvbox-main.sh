@@ -39,13 +39,25 @@ main() {
   _statusbar_alpha=$(tmux_get_option "${TMUX_GRUVBOX_STATUSBAR_ALPHA}" "${DEFAULT_STATUSBAR_ALPHA}")
 
   case "$_theme" in
-  light | light256)
+  light)
+    # shellcheck disable=1091
+    source "${CURRENT_DIR}/src/palette_gruvbox_light.sh"
+    # shellcheck disable=1091
+    source "${CURRENT_DIR}/src/theme_gruvbox_light.sh"
+    ;;
+  light256)
     # shellcheck disable=1091
     source "${CURRENT_DIR}/src/palette_gruvbox_light256.sh"
     # shellcheck disable=1091
     source "${CURRENT_DIR}/src/theme_gruvbox_light.sh"
     ;;
-  dark | dark256 | *)
+  dark)
+    # shellcheck disable=1091
+    source "${CURRENT_DIR}/src/palette_gruvbox_dark.sh"
+    # shellcheck disable=1091
+    source "${CURRENT_DIR}/src/theme_gruvbox_dark.sh"
+    ;;
+  dark256 | *)
     # shellcheck disable=1091
     source "${CURRENT_DIR}/src/palette_gruvbox_dark256.sh"
     # shellcheck disable=1091

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added code linters for shellcheck & shfmt [#33](https://github.com/egel/tmux-gruvbox/issues/33)
 - Added tests (for linux) [#39](https://github.com/egel/tmux-gruvbox/issues/39)
 - Added customizable statusbar [#31](https://github.com/egel/tmux-gruvbox/issues/31)
+- Added support for 16-bit colors palette light & dark [#34](https://github.com/egel/tmux-gruvbox/issues/34)
 
 ### Changed
 
