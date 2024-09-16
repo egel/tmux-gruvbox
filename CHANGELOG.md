@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Fixed incorrect spacings in template file
+- Improved README with more examples
+- Reduced repo size by outsource images to external platform [#36](https://github.com/egel/tmux-gruvbox/issues/36)
 
 ### Security
 
