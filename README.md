@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./docs/assets/img/logo-v1@0.5x.png" width="200px">
+    <img src="https://i.imgur.com/Ukyf4Iu.png" width="200px" referrerpolicy="no-referrer">
     <h1>Gruvbox theme for Tmux</h1>
 </div>
 
@@ -16,12 +16,13 @@ Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev
       title="Grovbox dark and light themes for Tmux"
       width="100%"
       height="auto"
-      style="max-width: 800px; text-align: center; border-radius: 12px; overflow:hidden;"  />
+      style="max-width: 800px; text-align: center; border-radius: 12px; overflow:hidden;"
+      referrerpolicy="no-referrer"
+    />
   </a>
 </div>
 
-> Screenshot made from macOS [alacritty][github-alacritty] terminal with xterm-256color and [Hack Nerd Font Regular][github-nerd-fonts].<br/>
-> Backgrounds by [Aleksandar Pasaric][pexcel-1] and [Vishnu Murali][pexcel-2].
+> Screenshot made with dark & light themes (16-bit) from macOS [alacritty][github-alacritty] terminal with xterm-256color and [Hack Nerd Font Regular][github-nerd-fonts]. Backgrounds by [Aleksandar Pasaric][pexcel-1] and [Vishnu Murali][pexcel-2].
 
 ## Installation
 
@@ -40,9 +41,10 @@ Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated 
 
 ### Install manually
 
-1.  Clone the project to desired location
+> [!TIP]
+> If you do not have github account [download](https://github.com/egel/tmux-gruvbox/archive/refs/heads/main.zip) it and unzip.
 
-    > ![TIP] If you do not have github account [download](https://github.com/egel/tmux-gruvbox/archive/refs/heads/main.zip) it and unzip.
+1.  Clone the project to desired location
 
     ```bash
     cd ~/projects/
@@ -64,13 +66,13 @@ Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated 
 
 - default value: `dark256`
 - available themes:
-  - `dark` ([preview]())
-  - `light` ()
-  - `dark256` ([preview]())
-  - `light256` ([preview](https://i.imgur.com/fvpdRjg.png))
+  - `dark` ([preview][imgur-img-gruvbox-dark-16bit-1x])
+  - `light` ([preview][imgur-img-gruvbox-light-16bit-1x])
+  - `dark256` ([preview][imgur-img-gruvbox-dark256-1x])
+  - `light256` ([preview][imgur-img-gruvbox-light256-1x])
 
 ```bash
-set -g @tmux-gruvbox 'dark'
+set -g @tmux-gruvbox 'dark' # dark256, light, light256
 ```
 
 ### Transparent status-bar
@@ -87,7 +89,7 @@ set -g @tmux-gruvbox-statusbar-alpha 'true'
 - default value: `'#S'`
 
 ```bash
-set -g @tmux-gruvbox-left-status-a
+set -g @tmux-gruvbox-left-status-a '#S' # tmux's session name
 ```
 
 ### Right Status (Section X)
@@ -128,8 +130,10 @@ This section is customizable for user, and by default contains hostname.
 set -g @tmux-gruvbox-right-status-z '#h #{tmux_mode_indicator}'
 ```
 
-> ![TIP]: make sure the themes' settings are defined before all other plugins,
-> otherwise plugin's content may not be displayed correctly in by the theme.
+> [!TIP]
+> Make sure the themes' settings are defined before all other plugins,
+> otherwise content from external plugins may not be displayed correctly by
+> the theme.
 
 ## Development
 
@@ -186,4 +190,5 @@ GPLv3 - Maciej Sypień
 [imgur-img-gruvbox-dark-light-comparision-0.5x]: https://i.imgur.com/p6lUnzb.png
 [imgur-img-gruvbox-dark-16bit-1x]: https://i.imgur.com/ae88LQI.png
 [imgur-img-gruvbox-dark256-1x]: https://i.imgur.com/kzQTTCa.png
-[imgur-img-gruvbox-light-1x]: https://i.imgur.com/fvpdRjg.png
+[imgur-img-gruvbox-light-16bit-1x]: https://i.imgur.com/fvpdRjg.png
+[imgur-img-gruvbox-light256-1x]: https://i.imgur.com/tQsl6LA.png
