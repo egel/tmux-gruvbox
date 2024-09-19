@@ -20,3 +20,12 @@ jobs:
         uses: actions/checkout@main
       - name: lint files against shfmt
         run: make lint_shfmt
+  test-setup-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install soft
+        run: sudo apt install -y tmux git
+      - name: checkout repo
+        uses: actions/checkout@main
+      - name: test setup
+        run: ./tests/linux_setup_plugin_and_run.sh
