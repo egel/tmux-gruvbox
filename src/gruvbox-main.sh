@@ -1,8 +1,7 @@
 #!/bin/bash
 
-SCRIPT_SRC="$(dirname "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}")"
-readonly SCRIPT_SRC
-CURRENT_DIR=$(cd "${SCRIPT_SRC}" >/dev/null 2>&1 && pwd) readonly CURRENT_DIR
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly CURRENT_DIR
 readonly THEME_OPTION="@tmux-gruvbox"
 readonly DEFAULT_THEME="dark"
 
