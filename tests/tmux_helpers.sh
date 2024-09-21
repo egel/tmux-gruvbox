@@ -28,8 +28,8 @@ helper_print_fail() {
   local _current_val="${2}"
   local _expected_val="${3}"
   printf "FAIL. %s\n" "${_msg}"
-  printf "current value:\t%s" "$_current_val"
-  printf "expected value:\t%s" "$_expected_val"
+  printf "current value:\t%s\n" "$_current_val"
+  printf "expected value:\t%s\n" "$_expected_val"
 }
 
 helper_print_success() {

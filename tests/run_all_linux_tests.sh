@@ -12,6 +12,7 @@ main() {
     printf "\n=============================================="
     printf "\n %s" "$test"
     printf "\n=============================================="
+    printf ""
     bash -c "$test"
 
     # run all and count failures
