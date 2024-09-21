@@ -29,7 +29,9 @@ EOF
   echo "Current DIR: $CURRENT_DIR"
 
   # link current repo to plugin list
-  ln -sf ~/.tmux/plugins/tmux-gruvbox/ "$CURRENT_DIR/../../"
+  ln -sfv "$CURRENT_DIR/../../../tmux-gruvbox" "${HOME}/.tmux/plugins/tmux-gruvbox"
+
+  ls -al ~/.tmux/plugins/
 
   helper_install_tpm_plugins
 
