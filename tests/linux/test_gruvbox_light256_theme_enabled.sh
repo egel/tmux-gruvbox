@@ -5,9 +5,6 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck disable=SC1091
 source "${CURRENT_DIR}/../tmux_helpers.sh"
 
-# default value of status-left section from gruvbox theme
-readonly STATUS_LEFT_DEFAULT="#[bg=colour241,fg=colour248] #S #[bg=colour237,fg=colour241,nobold,noitalics,nounderscore]"
-
 main() {
   helper_tearup_linux
 
@@ -18,7 +15,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 
 # Other plugins
 set -g @plugin 'egel/tmux-gruvbox'
-set -g @tmux-gruvbox 'dark'
+set -g @tmux-gruvbox 'light256'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
@@ -26,27 +23,29 @@ EOF
 
   cat ~/.tmux.conf
 
-  echo "Current DIR: $CURRENT_DIR"
-
-  # link current repo to plugin list
+  # it's essential to link current repo to the plugins' directory
   ln -sfv "$CURRENT_DIR/../../../tmux-gruvbox" "${HOME}/.tmux/plugins/tmux-gruvbox"
-
-  ls -al ~/.tmux/plugins/
 
   helper_install_tpm_plugins
 
   # start new detached session
   tmux new -d
 
+  # default value of status-left section from gruvbox theme
+  _status_left_expected="#[bg=colour243,fg=colour255] #S #[bg=colour252,fg=colour243,nobold,noitalics,nounderscore]"
+
   # get status of something from theme
   _status_left_current=$(tmux show-option -gqv status-left)
-  if [[ "$STATUS_LEFT_DEFAULT" != "$_status_left_current" ]]; then
-    helper_print_fail_and_exit "status-left did not match" # fail fast
-  else
-    helper_print_success "status-left match"
+  if [[ "$_status_left_expected" != "$_status_left_current" ]]; then
+    helper_print_fail "status-left did not match" "$_status_left_current" "$_status_left_expected"
+    helper_teardown
+    exit 1
   fi
 
+  helper_print_success "status-left match"
   helper_teardown
+  exit 0
+
 }
 
 main "$@"

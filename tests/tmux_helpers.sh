@@ -24,8 +24,12 @@ helper_tearup_linux() {
 }
 
 helper_print_fail() {
-  local _msg="${1:-}"
+  local _msg="${1}"
+  local _current_val="${2}"
+  local _expected_val="${3}"
   printf "FAIL. %s\n" "${_msg}"
+  printf "current value:\t%s" "$_current_val"
+  printf "expected value:\t%s" "$_expected_val"
 }
 
 helper_print_success() {
@@ -34,12 +38,12 @@ helper_print_success() {
 }
 
 helper_print_fail_and_exit() {
-  helper_print_fail "$1"
+  helper_print_fail "$1" "$2" "$3"
   exit 1
 }
 
 helper_print_success_and_exit() {
-  helper_print_success "$1"
+  helper_print_success "$1" "$2" "$3"
   exit 0
 }
 

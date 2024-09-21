@@ -5,20 +5,20 @@ jobs:
   lint_shellcheck:
     runs-on: ubuntu-latest
     steps:
-      - name: install shellcheck
+      - name: Install shellcheck
         run: sudo apt-get install -y shellcheck
-      - name: checkout repo
+      - name: Checkout repo
         uses: actions/checkout@main
-      - name: lint files against shellcheck
+      - name: Lint files against shellcheck
         run: make lint_shellcheck
   lint_shfmt:
     runs-on: ubuntu-latest
     steps:
-      - name: install shfmt
+      - name: Install shfmt
         run: sudo apt-get install -y shfmt
-      - name: checkout repo
+      - name: Checkout repository
         uses: actions/checkout@main
-      - name: lint files against shfmt
+      - name: Lint files against shfmt
         run: make lint_shfmt
   test_setup_linux:
     runs-on: ubuntu-latest
@@ -26,9 +26,9 @@ jobs:
       - lint_shfmt
       - lint_shellcheck
     steps:
-      - name: install soft
+      - name: Install required software
         run: sudo apt install -y tmux git
-      - name: checkout repo
+      - name: Checkout repository
         uses: actions/checkout@main
-      - name: run all linux tests
+      - name: Execute all linux tests and check results
         run: ./tests/run_all_linux_tests.sh
