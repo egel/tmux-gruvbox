@@ -1,12 +1,12 @@
 #!/bin/bash
 
-helper_teardown_tmux() {
+helper_teardown() {
   rm -rf ~/.tmux.conf
   rm -rf ~/.tmux/
   tmux kill-server >/dev/null 2>&1
 }
 
-helper_tearup_linux_tmux() {
+helper_tearup_linux() {
   if [[ "$(uname)" != "Linux" ]]; then
     echo "NOT LINUX. Failed & exit."
     exit 1
@@ -21,15 +21,23 @@ helper_tearup_linux_tmux() {
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
-helper_print_fail_and_exit() {
+helper_print_fail() {
   local _msg="${1:-}"
   printf "FAIL. %s\n" "${_msg}"
+}
+
+helper_print_success() {
+  local _msg="${1:-}"
+  printf "SUCCESS. %s\n" "${_msg}"
+}
+
+helper_print_fail_and_exit() {
+  helper_print_fail "$1"
   exit 1
 }
 
 helper_print_success_and_exit() {
-  local _msg="${1:-}"
-  printf "SUCCESS. %s\n" "${_msg}"
+  helper_print_success "$1"
   exit 0
 }
 
