@@ -4,10 +4,24 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 main() {
   set -e # exit on error
+  declare -i _countFailures
+  local _files
+  _countFailures=0
   _files=$(find "$CURRENT_DIR" -name "test_linux_*" -type f)
   for test in $_files; do
     bash -c "$test"
+
+    # run all and count failures
+    retVal=$?
+    if [ $retVal -eq 1 ]; then
+      _countFailures+=1
+    fi
   done
+
+  # check if anything failed and fail
+  if [ "$_countFailures" -gt 0 ]; then
+    exit 1
+  fi
 }
 
 main "$@"

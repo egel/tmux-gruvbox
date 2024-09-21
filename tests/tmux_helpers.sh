@@ -1,6 +1,7 @@
 #!/bin/bash
 
 helper_teardown() {
+  echo "TEARDOWN"
   rm -rf ~/.tmux.conf
   rm -rf ~/.tmux/
   tmux kill-server >/dev/null 2>&1
@@ -11,6 +12,7 @@ helper_tearup_linux() {
     echo "NOT LINUX. Failed & exit."
     exit 1
   fi
+  echo "TEARUP LINUX"
 
   # install software
   sudo apt update -y
@@ -44,4 +46,9 @@ helper_print_success_and_exit() {
 # install TMP plugins with command
 helper_install_tpm_plugins() {
   bash -c "${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh install_plugins"
+}
+
+helper_get_project_root_dir() {
+  _current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  echo "${_current_dir}/../"
 }

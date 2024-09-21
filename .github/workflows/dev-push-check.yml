@@ -1,5 +1,5 @@
 name: dev-push-check
-run-name: ${{ github.actor }} pushed new code to {{ github.ref }} 💻
+run-name: ${{ github.actor }} pushed new code 💻
 on: [push] #, pull_request]
 jobs:
   lint_shellcheck:
