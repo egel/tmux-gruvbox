@@ -9,7 +9,7 @@ source "${CURRENT_DIR}/../tmux_helpers.sh"
 readonly STATUS_LEFT_DEFAULT="#[bg=colour241,fg=colour248] #S #[bg=colour237,fg=colour241,nobold,noitalics,nounderscore]"
 
 main() {
-  helper_tearup_linux_tmux
+  helper_tearup_linux
 
   cat <<EOF >~/.tmux.conf
 # List of plugins
