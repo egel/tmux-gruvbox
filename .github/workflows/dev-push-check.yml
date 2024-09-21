@@ -1,8 +1,8 @@
-name: GitHub Actions
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: dev-push-check
+run-name: ${{ github.actor }} pushed new code to {{ github.ref }} 💻
+on: [push] #, pull_request]
 jobs:
-  lint-shellcheck:
+  lint_shellcheck:
     runs-on: ubuntu-latest
     steps:
       - name: install shellcheck
@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@main
       - name: lint files against shellcheck
         run: make lint_shellcheck
-  lint-shfmt:
+  lint_shfmt:
     runs-on: ubuntu-latest
     steps:
       - name: install shfmt
@@ -20,12 +20,15 @@ jobs:
         uses: actions/checkout@main
       - name: lint files against shfmt
         run: make lint_shfmt
-  test-setup-linux:
+  test_setup_linux:
     runs-on: ubuntu-latest
+    needs:
+      - lint_shfmt
+      - lint_shellcheck
     steps:
       - name: install soft
         run: sudo apt install -y tmux git
       - name: checkout repo
         uses: actions/checkout@main
-      - name: test setup
-        run: ./tests/linux_setup_plugin_and_run.sh
+      - name: dummy test setup
+        run: ./tests/run_all_linux_tests.sh
