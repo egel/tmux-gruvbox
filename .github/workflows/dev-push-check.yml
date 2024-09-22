@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@main
       - name: Lint files against shfmt
         run: make lint_shfmt
-  test_setup_linux:
+  tests_linux:
     runs-on: ubuntu-latest
     needs:
       - lint_shfmt
