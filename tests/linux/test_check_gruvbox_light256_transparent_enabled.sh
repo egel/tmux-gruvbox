@@ -3,7 +3,9 @@
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # shellcheck disable=SC1091
-source "${CURRENT_DIR}/../tmux_helpers.sh"
+source "${CURRENT_DIR}/../test_helpers.sh"
+# shellcheck disable=SC1091
+source "${CURRENT_DIR}/../tmux_utils.sh"
 
 main() {
   helper_tearup_linux
@@ -34,7 +36,7 @@ EOF
 
   # check if left side match
   _status_left_expected="#[bg=colour239,fg=colour223] #S #[bg=colour250,fg=colour239,nobold,noitalics,nounderscore]"
-  _status_left_current=$(tmux_get_statusleft)
+  _status_left_current=$(helper_tmux_get_statusleft)
   if [[ "$_status_left_current" != "$_status_left_expected" ]]; then
     helper_print_fail "status-left did not match" "$_status_left_current" "$_status_left_expected"
     helper_teardown
@@ -42,7 +44,7 @@ EOF
   fi
   # check if status is not transparent
   _status_style_expected="bg=default,fg=colour237"
-  _status_style_current=$(tmux_get_statusstyle)
+  _status_style_current=$(helper_tmux_get_statusstyle)
   if [[ "$_status_style_current" != "$_status_style_expected" ]]; then
     helper_print_fail "status-style did not match" "$_status_style_current" "$_status_style_expected"
     helper_teardown
