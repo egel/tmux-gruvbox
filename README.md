@@ -92,6 +92,20 @@ To keep the files clean we use few program to help us achieve it:
 2.  Markdown (prettier/prettierd)
 3.  Shell (shellcheck, shfmt)
 
+## Tests
+
+local requires Vagrant
+
+Example setup of for macOS:
+
+- `brew` not yet support virtualbox@7.1 -> install from [virtualbox page](https://www.virtualbox.org/wiki/Downloads).
+
+```bash
+vagrant init hashicorp/bionic64
+vagrant box add hashicorp/bionic64
+vagrant up
+```
+
 ## License
 
 GPLv3 - Maciej Sypień
