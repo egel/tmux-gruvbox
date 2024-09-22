@@ -1,0 +1,34 @@
+name: dev-push-check
+run-name: ${{ github.actor }} pushed new code 💻
+on: [push] #, pull_request]
+jobs:
+  lint_shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+      - name: Checkout repo
+        uses: actions/checkout@main
+      - name: Lint files against shellcheck
+        run: make lint_shellcheck
+  lint_shfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install shfmt
+        run: sudo apt-get install -y shfmt
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Lint files against shfmt
+        run: make lint_shfmt
+  tests_linux:
+    runs-on: ubuntu-latest
+    needs:
+      - lint_shfmt
+      - lint_shellcheck
+    steps:
+      - name: Install required software
+        run: sudo apt install -y tmux git
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Execute all linux tests and check results
+        run: ./tests/run_all_linux_tests.sh

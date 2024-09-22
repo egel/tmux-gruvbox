@@ -18,9 +18,24 @@ get_theme() {
 }
 
 main() {
-  local theme
-  theme=$(get_theme "$THEME_OPTION" "$DEFAULT_THEME")
-  tmux source-file "$CURRENT_DIR/tmux-gruvbox-${theme}.conf"
+  local _theme _path
+  _theme=$(get_theme "$THEME_OPTION" "$DEFAULT_THEME")
+  case "$_theme" in
+  light-transparent)
+    _theme="light-transparent"
+    ;;
+  dark-transparent)
+    _theme="dark-transparent"
+    ;;
+  light | light256)
+    _theme="light"
+    ;;
+  dark | dark256 | *)
+    _theme="dark"
+    ;;
+  esac
+
+  tmux source-file "${CURRENT_DIR}/tmux-gruvbox-${_theme}.conf"
 }
 
 main "$@"
