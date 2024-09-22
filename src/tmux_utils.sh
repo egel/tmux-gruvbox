@@ -64,6 +64,13 @@ tmux_set_window_option_now() {
 
 # return the value of status style
 tmux_get_statusstyle() {
-  local _val=tmux show-option -gqv status-style
+  local _val
+  _val=$(tmux show-option -gqv status-style)
+  echo "$_val"
+}
+
+tmux_get_statusleft() {
+  local _val
+  _val=$(tmux show-option -gqv status-left)
   echo "$_val"
 }

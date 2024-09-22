@@ -33,7 +33,7 @@ EOF
 
   # check if left side match
   _status_left_expected="#[bg=colour241,fg=colour248] #S #[bg=colour237,fg=colour241,nobold,noitalics,nounderscore]"
-  _status_left_current=$(tmux show-option -gqv status-left)
+  _status_left_current=$(tmux_get_statusleft)
   if [[ "$_status_left_current" != "$_status_left_expected" ]]; then
     helper_print_fail "status-left did not match" "$_status_left_current" "$_status_left_expected"
     helper_teardown
