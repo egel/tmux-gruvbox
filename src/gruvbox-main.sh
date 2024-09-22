@@ -2,8 +2,6 @@
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly CURRENT_DIR
-readonly THEME_OPTION="@tmux-gruvbox"
-readonly DEFAULT_THEME="dark"
 
 # hold the array of all command to configure tmux theme
 declate -a TMUX_CMDS
@@ -22,13 +20,13 @@ readonly TMUX_GRUVBOX_RIGHT_STAUTS_Y="@tmux-gruvbox-right-status-y"
 readonly TMUX_GRUVBOX_RIGHT_STAUTS_Z="@tmux-gruvbox-right-status-z"
 
 # define simple theme options (no color interpolation required)
-DEFAULT_THEME="dark"
-DEFAULT_STATUSBAR_ALPHA=false
+readonly DEFAULT_THEME="dark"
+readonly DEFAULT_STATUSBAR_ALPHA=false
 # defaults for theme option (with color interpolation)
-DEFAULT_LEFT_STATUS_A='#S'
-DEFAULT_RIGHT_STATUS_X='%Y-%m-%d'
-DEFAULT_RIGHT_STATUS_Y='%H:%M'
-DEFAULT_RIGHT_STATUS_Z='#h'
+readonly DEFAULT_LEFT_STATUS_A='#S'
+readonly DEFAULT_RIGHT_STATUS_X='%Y-%m-%d'
+readonly DEFAULT_RIGHT_STATUS_Y='%H:%M'
+readonly DEFAULT_RIGHT_STATUS_Z='#h'
 
 main() {
   TMUX_CMDS=() # clear
