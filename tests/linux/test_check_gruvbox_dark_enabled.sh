@@ -41,7 +41,7 @@ EOF
   fi
   # check if status is not transparent
   _status_style_expected="bg=#3c3836,fg=#ebdbb2"
-  _status_style_current=$(tmux show-option -gqv status-style)
+  _status_style_current=$(tmux_get_statusstyle)
   if [[ "$_status_style_current" != "$_status_style_expected" ]]; then
     helper_print_fail "status-style did not match" "$_status_style_current" "$_status_style_expected"
     helper_teardown
