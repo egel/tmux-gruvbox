@@ -8,9 +8,9 @@ declate -a TMUX_CMDS
 
 # load libraries
 # shellcheck disable=1091
-source "${CURRENT_DIR}/src/helper_methods.sh"
+source "${CURRENT_DIR}/helper_methods.sh"
 # shellcheck disable=1091
-source "${CURRENT_DIR}/src/tmux_utils.sh"
+source "${CURRENT_DIR}/tmux_utils.sh"
 
 readonly TMUX_GRUVBOX="@tmux-gruvbox"
 readonly TMUX_GRUVBOX_STATUSBAR_ALPHA="@tmux-gruvbox-statusbar-alpha"
@@ -21,7 +21,7 @@ readonly TMUX_GRUVBOX_RIGHT_STAUTS_Z="@tmux-gruvbox-right-status-z"
 
 # define simple theme options (no color interpolation required)
 readonly DEFAULT_THEME="dark"
-readonly DEFAULT_STATUSBAR_ALPHA=false
+readonly DEFAULT_STATUSBAR_ALPHA='false'
 # defaults for theme option (with color interpolation)
 readonly DEFAULT_LEFT_STATUS_A='#S'
 readonly DEFAULT_RIGHT_STATUS_X='%Y-%m-%d'
@@ -39,27 +39,27 @@ main() {
   case "$_theme" in
   light)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_light.sh"
+    source "${CURRENT_DIR}/palette_gruvbox_light.sh"
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/theme_gruvbox_light.sh"
+    source "${CURRENT_DIR}/theme_gruvbox_light.sh"
     ;;
   light256)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_light256.sh"
+    source "${CURRENT_DIR}/palette_gruvbox_light256.sh"
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/theme_gruvbox_light256.sh"
+    source "${CURRENT_DIR}/theme_gruvbox_light256.sh"
     ;;
   dark)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_dark.sh"
+    source "${CURRENT_DIR}/palette_gruvbox_dark.sh"
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/theme_gruvbox_dark.sh"
+    source "${CURRENT_DIR}/theme_gruvbox_dark.sh"
     ;;
   dark256 | *)
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/palette_gruvbox_dark256.sh"
+    source "${CURRENT_DIR}/palette_gruvbox_dark256.sh"
     # shellcheck disable=1091
-    source "${CURRENT_DIR}/src/theme_gruvbox_dark.sh"
+    source "${CURRENT_DIR}/theme_gruvbox_dark.sh"
     ;;
   esac
 
@@ -69,7 +69,8 @@ main() {
   _status_right_y=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_Y" "$DEFAULT_RIGHT_STATUS_Y")
   _status_right_z=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_Z" "$DEFAULT_RIGHT_STATUS_Z")
 
-  theme_args=(
+  local _theme_args
+  _theme_args=(
     "$_status_left_a"
     "$_status_right_x"
     "$_status_right_y"
@@ -80,13 +81,13 @@ main() {
   case $_theme in
   light256)
     # light256 have slightly different colors placement then regular light 16-bit
-    theme_set_light256 "${theme_args[@]}"
+    theme_set_light256 "${_theme_args[@]}"
     ;;
   light)
-    theme_set_light "${theme_args[@]}"
+    theme_set_light "${_theme_args[@]}"
     ;;
   dark | dark256 | *)
-    theme_set_dark "${theme_args[@]}"
+    theme_set_dark "${_theme_args[@]}"
     ;;
   esac
 
