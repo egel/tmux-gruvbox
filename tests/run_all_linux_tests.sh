@@ -9,10 +9,11 @@ main() {
   _countFailures=0
   _files=$(find "$CURRENT_DIR/linux" -name "test_*" -type f)
   for test in $_files; do
+    printf "\n"
     printf "\n=============================================="
     printf "\n %s" "$test"
     printf "\n=============================================="
-    printf ""
+    printf "\n"
     bash -c "$test"
 
     # run all and count failures

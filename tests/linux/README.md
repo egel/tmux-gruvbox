@@ -1,6 +1,6 @@
 # Linux tests
 
-Those test is meant to run on linux
+Those tests are meant to run on linux:
 
 - ubuntu 20.04 LTS
-- bash
+- with bash
