@@ -1,20 +1,5 @@
 #!/bin/bash
 
-# get desired option from tmux or default
-tmux_get_option_or_default() {
-  local _option_name _default_value
-  _option_name="$1"
-  _default_value="$2"
-
-  local _current_option_value
-  _current_option_value=$(tmux show-option -gqv "$_option_name")
-  if [[ -n "$_current_option_value" ]]; then
-    echo "$_current_option_value"
-  else
-    echo "$_default_value"
-  fi
-}
-
 # get desired tmux option or use given default value
 tmux_get_option() {
   local _option_name _default_value
