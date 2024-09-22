@@ -16,7 +16,6 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # Other plugins
 set -g @plugin 'egel/tmux-gruvbox'
 set -g @tmux-gruvbox 'dark'
-set -g @tmux-gruvbox-statusbar-alpha 'true'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
@@ -41,7 +40,7 @@ EOF
     exit 1
   fi
   # check if status is not transparent
-  _status_style_expected="bg=default,fg=#ebdbb2"
+  _status_style_expected="bg=#3c3836,fg=#ebdbb2"
   _status_style_current=$(tmux show-option -gqv status-style)
   if [[ "$_status_style_current" != "$_status_style_expected" ]]; then
     helper_print_fail "status-style did not match" "$_status_style_current" "$_status_style_expected"
