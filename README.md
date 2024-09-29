@@ -3,7 +3,7 @@
     <h1>Gruvbox theme for Tmux</h1>
 </div>
 
-Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev's [gruvbox colorscheme][github-grovbox] and inspired by work of [Gordon Chiam](https://gist.github.com/gchiam/4606522f513cc64b79ce). Subthemes switching inspired by [tmux-color-solarized][tmux-color-solarized].
+Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev's [gruvbox colorscheme][github-grovbox] and inspired by work of [Gordon Chiam](https://gist.github.com/gchiam/4606522f513cc64b79ce). Subthemes switching inspired by [tmux-color-solarized][github-seebi-tmux-color-solarized].
 
 <!--
   Using HTML table instead default markdown tables as provide it provide
@@ -11,7 +11,7 @@ Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev
 -->
 
 <div align="center">
-  <a href="https://i.imgur.com/uGyGwlC.png" title="Grovbox dark and light themes for Tmux">
+  <a href="https://i.imgur.com/uGyGwlC.png" target="_blank" title="Grovbox dark and light themes for Tmux">
     <img src="https://i.imgur.com/p6lUnzb.png"
       title="Grovbox dark and light themes for Tmux"
       width="100%"
@@ -28,16 +28,28 @@ Theme with 'retro groove' flavor for [Tmux][github-tmux], based on Pavel Pertsev
 
 ### Install via [TPM][github-tpm] (recommended)
 
-Add plugin at the top list of TPM plugins in `.tmux.conf` and select desired theme.
+Add plugin at the top list of TPM plugins list in `.tmux.conf` and select desired theme.
 
 ```bash
 # ~/.tmux.conf
+
+set -g @plugin 'tmux-plugins/tpm' # mandatory
+set -g @plugin 'tmux-plugins/tmux-sensible' # optional recommended
+
 set -g @plugin 'egel/tmux-gruvbox'
 # set desired options...
-set -g @tmux-gruvbox 'dark' # or 'light'
+set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
+# set desired theme options...
+set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
+
+# other plugins
+...
 ```
 
 Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated with the theme at this point.
+
+> [!NOTE]
+> If you used v1 before and interested to adpt to v2 use this [Migration Guide from v1 to v2][docs-migration-guide-from-v1-to-v2].
 
 ### Install manually
 
@@ -55,25 +67,46 @@ Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated 
 
     ```bash
     # ~/.tmux.conf
+
     run ~/projects/tmux-gruvbox/tmux-gruvbox.tmux
     # set desired options...
-    set -g @tmux-gruvbox 'dark' # or light
+    set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
     ```
 
 ## Configuration options
 
+<div align="center">
+  <a href="https://i.imgur.com/tO5Y1NN.png" target="_blank" title="Grovbox dark and light themes configuration sections">
+    <img src="https://i.imgur.com/x4tkeU7.png"
+         title="Grovbox dark and light themes configuration sections"
+         width="100%"
+         height="auto"
+         style="max-width: 800px; text-align: center; border-radius: 12px; overflow:hidden;"
+         referrerpolicy="no-referrer" />
+  </a>
+</div>
+
 ### Theme
 
 - default value: `dark256`
-- available themes:
-  - `dark` ([preview][imgur-img-gruvbox-dark-16bit-1x])
-  - `light` ([preview][imgur-img-gruvbox-light-16bit-1x])
-  - `dark256` ([preview][imgur-img-gruvbox-dark256-1x])
-  - `light256` ([preview][imgur-img-gruvbox-light256-1x])
+
+| Theme name | Color palette | Preview link                                                          |
+| :--------- | :------------ | :-------------------------------------------------------------------- |
+| `dark`     | 16-bit colors | <a href="https://i.imgur.com/ae88LQI.png" target="_blank">preview</a> |
+| `light`    | 16-bit colors | <a href="https://i.imgur.com/fvpdRjg.png" target="_blank">preview</a> |
+| `dark256`  | 256 colors    | <a href="https://i.imgur.com/kzQTTCa.png" target="_blank">preview</a> |
+| `light256` | 256 colors    | <a href="https://i.imgur.com/tQsl6LA.png" target="_blank">preview</a> |
 
 ```bash
 set -g @tmux-gruvbox 'dark' # dark256, light, light256
 ```
+
+> [!TIP]
+> Each terminal emulator can behave bit differently regarding displaying colors.
+> If you have some problems see
+> [True Color (24-bit) and italics with alacritty + tmux + vim (neovim)][github-gist-andersevenrud-alacritty-tmux-vim-truecolor]
+> where there is great wisdom how to adjust terminal, especially when used
+> alacritty and tmux.
 
 ### Transparent status-bar
 
@@ -86,7 +119,7 @@ set -g @tmux-gruvbox-statusbar-alpha 'true'
 
 ### Left Status (Section A)
 
-- default value: `'#S'`
+- default value: `'#S'` (session name)
 
 ```bash
 set -g @tmux-gruvbox-left-status-a '#S' # tmux's session name
@@ -97,6 +130,10 @@ set -g @tmux-gruvbox-left-status-a '#S' # tmux's session name
 - default value: `'%Y-%m-%d'`
 
 This section is customizable for user, and by default contains current date.
+
+> [!TIP]
+> Some user may have problem with displaying dates in desired format, if this
+> case for you try using double percent `%%`
 
 ```bash
 # set date in US notation
@@ -121,7 +158,7 @@ set -g @tmux-gruvbox-right-status-y '%I:%M %p' # 09:54 PM
 
 ### Right Status (Section Z)
 
-- default value: `'#h'`
+- default value: `'#h'` (hostname)
 
 This section is customizable for user, and by default contains hostname.
 
@@ -177,18 +214,20 @@ To keep the files clean we use few program to help us achieve it:
 
 GPLv3 - Maciej Sypień
 
-[github-tmux]: https://github.com/tmux/tmux
+[docs-migration-guide-from-v1-to-v2]: ./docs/migration-guide-from-v1-to-v2.md
+[github-alacritty]: https://github.com/alacritty/alacritty
+[github-gist-andersevenrud-alacritty-tmux-vim-truecolor]: https://gist.github.com/andersevenrud/015e61af2fd264371032763d4ed965b6
 [github-grovbox]: https://github.com/morhetz/gruvbox
 [github-hack]: https://github.com/chrissimpkins/Hack
 [github-nerd-fonts]: https://github.com/ryanoasis/nerd-fonts
-[github-alacritty]: https://github.com/alacritty/alacritty
+[github-seebi-tmux-color-solarized]: https://github.com/seebi/tmux-colors-solarized
+[github-tmux]: https://github.com/tmux/tmux
 [github-tpm]: https://github.com/tmux-plugins/tpm
-[tmux-color-solarized]: https://github.com/seebi/tmux-colors-solarized
-[pexcel-1]: https://www.pexels.com/photo/urban-photo-of-an-alley-2411688/
-[pexcel-2]: https://www.pexels.com/photo/lights-hanging-above-the-alley-in-a-city-at-night-27044195/
-[imgur-img-gruvbox-dark-light-comparision-1x]: https://i.imgur.com/uGyGwlC.png
-[imgur-img-gruvbox-dark-light-comparision-0.5x]: https://i.imgur.com/p6lUnzb.png
 [imgur-img-gruvbox-dark-16bit-1x]: https://i.imgur.com/ae88LQI.png
+[imgur-img-gruvbox-dark-light-comparision-0.5x]: https://i.imgur.com/p6lUnzb.png
+[imgur-img-gruvbox-dark-light-comparision-1x]: https://i.imgur.com/uGyGwlC.png
 [imgur-img-gruvbox-dark256-1x]: https://i.imgur.com/kzQTTCa.png
 [imgur-img-gruvbox-light-16bit-1x]: https://i.imgur.com/fvpdRjg.png
 [imgur-img-gruvbox-light256-1x]: https://i.imgur.com/tQsl6LA.png
+[pexcel-1]: https://www.pexels.com/photo/urban-photo-of-an-alley-2411688/
+[pexcel-2]: https://www.pexels.com/photo/lights-hanging-above-the-alley-in-a-city-at-night-27044195/
