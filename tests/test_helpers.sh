@@ -33,7 +33,7 @@ helper_print_fail() {
 }
 
 helper_print_success() {
-  local _msg="${1:-}"
+  local _msg="${1}"
   printf "SUCCESS. %s\n" "${_msg}"
 }
 
@@ -52,7 +52,16 @@ helper_install_tpm_plugins() {
   bash -c "${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh install_plugins"
 }
 
-helper_get_project_root_dir() {
-  _current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  echo "${_current_dir}/../"
+# return the value of tmux status-style
+helper_tmux_get_statusstyle() {
+  local _val
+  _val=$(tmux show-option -gqv status-style)
+  echo "$_val"
+}
+
+# return the value of tmux status-left
+helper_tmux_get_statusleft() {
+  local _val
+  _val=$(tmux show-option -gqv status-left)
+  echo "$_val"
 }

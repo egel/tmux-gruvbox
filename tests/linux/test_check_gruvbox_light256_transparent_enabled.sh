@@ -4,6 +4,8 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # shellcheck disable=SC1091
 source "${CURRENT_DIR}/../test_helpers.sh"
+# shellcheck disable=SC1091
+source "${CURRENT_DIR}/../tmux_utils.sh"
 
 main() {
   helper_tearup_linux
@@ -15,7 +17,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 
 # Other plugins
 set -g @plugin 'egel/tmux-gruvbox'
-set -g @tmux-gruvbox 'light'
+set -g @tmux-gruvbox 'light256'
 set -g @tmux-gruvbox-statusbar-alpha 'true'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
@@ -33,7 +35,7 @@ EOF
   tmux new -d
 
   # check if left side match
-  _status_left_expected="#[bg=#bdae93,fg=#665c54] #S #[bg=#ebdbb2,fg=#bdae93,nobold,noitalics,nounderscore]"
+  _status_left_expected="#[bg=colour239,fg=colour223] #S #[bg=colour250,fg=colour239,nobold,noitalics,nounderscore]"
   _status_left_current=$(helper_tmux_get_statusleft)
   if [[ "$_status_left_current" != "$_status_left_expected" ]]; then
     helper_print_fail "status-left did not match" "$_status_left_current" "$_status_left_expected"
@@ -41,7 +43,7 @@ EOF
     exit 1
   fi
   # check if status is not transparent
-  _status_style_expected="bg=default,fg=#3c3836"
+  _status_style_expected="bg=default,fg=colour237"
   _status_style_current=$(helper_tmux_get_statusstyle)
   if [[ "$_status_style_current" != "$_status_style_expected" ]]; then
     helper_print_fail "status-style did not match" "$_status_style_current" "$_status_style_expected"
