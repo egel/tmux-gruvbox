@@ -37,8 +37,6 @@ set -g @plugin 'tmux-plugins/tpm' # mandatory
 set -g @plugin 'tmux-plugins/tmux-sensible' # optional recommended
 
 set -g @plugin 'egel/tmux-gruvbox'
-# set desired options...
-set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
 # set desired theme options...
 set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
 
@@ -131,10 +129,6 @@ set -g @tmux-gruvbox-left-status-a '#S' # tmux's session name
 
 This section is customizable for user, and by default contains current date.
 
-> [!TIP]
-> Some user may have problem with displaying dates in desired format, if this
-> case for you try using double percent `%%`
-
 ```bash
 # set date in US notation
 set -g @tmux-gruvbox-right-status-x '%m/%d/%Y' # e.g.: 01/31/2024
@@ -144,6 +138,10 @@ set -g @tmux-gruvbox-right-status-x '%m/%d/%Y' # e.g.: 01/31/2024
 # or set date in EU notation
 set -g @tmux-gruvbox-right-status-x '%d.%m.%Y' # e.g.: 30.01.2024
 ```
+
+> [!TIP]
+> Some user may have problem with displaying dates in desired format, if this
+> case for you try using double percent `%%`
 
 ### Right Status (Section Y)
 
