@@ -37,8 +37,6 @@ set -g @plugin 'tmux-plugins/tpm' # mandatory
 set -g @plugin 'tmux-plugins/tmux-sensible' # optional recommended
 
 set -g @plugin 'egel/tmux-gruvbox'
-# set desired options...
-set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
 # set desired theme options...
 set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
 
