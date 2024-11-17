@@ -47,7 +47,7 @@ set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
 Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated with the theme at this point.
 
 > [!NOTE]
-> If you used v1 before and interested to adpt to v2 use this [Migration Guide from v1 to v2][docs-migration-guide-from-v1-to-v2].
+> If you used v1 before and interested to adapt to v2 use this [Migration Guide from v1 to v2][docs-migration-guide-from-v1-to-v2].
 
 ### Install manually
 
