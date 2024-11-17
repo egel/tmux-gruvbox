@@ -2,15 +2,11 @@
 
 Hello there!
 
-I am so happy to see you here and being interested in using new version of
-tmux-gruvbox theme.
+I am so happy to see you here and are interested in using the new version of tmux-gruvbox theme.
 
-I really try to do all my best giving you new, interesting features that you
-probably always wanted to have.
+I really try to do all my best giving you new, interesting features that you probably always wanted to have.
 
-In here I also wanted to thank you all people involved in contributing to this
-theme 🙏🙇. Especially for adding all suggestions, or reporting problems if
-they occurred - this helped a lot!
+In here I also wanted to thank you all people involved in contributing to this theme 🙏🙇. Especially for adding all suggestions, or reporting problems if they occurred - this helped a lot!
 
 ## What's new?
 
@@ -25,35 +21,25 @@ See what's new in [CHANGELOG][docs-changelog].
 
 ## Breaking changes
 
-I planned to have best possible user experience between migrating from v1 and v2,
-therefore tried to build new changes this way to keep the breaking changes
-as low as possible. This was not ideal, although I believe for many this would not
-require many changes and for some none.
+I planned to have best possible user experience between migrating from v1 and v2, therefore tried to build new changes this way to keep the breaking changes as low as possible. This was not ideal, although I believe for many this would not require many changes and for some none.
 
-### Theme names change
+### Theme names changes
 
 |         v1          |     v2     | description                                                             |
 | :-----------------: | :--------: | ----------------------------------------------------------------------- |
-|       `dark`        | `dark256`  |                                                                         |
-|       `light`       | `light256` |                                                                         |
+|       `dark`        | `dark256`  | 256-colors theme                                                        |
+|       `light`       | `light256` | 256-colors theme                                                        |
 | `dark-transparent`  |     ∅      | set `dark` or `dark256` theme and add `@tmux-gruvbox-statusbar-alpha`   |
 | `light-transparent` |     ∅      | set `light` or `light256` theme and add `@tmux-gruvbox-statusbar-alpha` |
 
-In v2 we've introduced a 16-bit color themes that should give the users more
-happiness utilizing a greater amount of supported colors (full gruvbox palette).
+In v2 we've introduced a 16-bit color themes that should give the users more happiness utilizing a greater amount of supported colors (full gruvbox palette).
 
-Therefore in v1 theme `light` & `dark` has been simply renamed and `256` postfix
-has been added to indicate used palette.
+Therefore in v2 themes `light` & `dark` has been simply renamed and `256` postfix has been added to indicate used palette. In v2 `light` & `dark` themes will be refering to 16-bit versions.
 
 > [!NOTE]
-> While implementing 16-bit colors I realized that many users (including me) had
-> problems with setting up correct the color interpretation in their workspace
-> to support multiple colors.
+> While implementing 16-bit colors I realized that many users (including me) had problems with setting up correct the color interpretation in their workspace to support multiple colors.
 >
-> Here is the page
-> [True Color (24-bit) and italics with alacritty + tmux + vim (neovim)][github-gist-andersevenrud-alacritty-tmux-vim-truecolor]
-> where I found great wisdom how to adjust my terminal, especially when used
-> alacritty, tmux & neovim.
+> Here is the page [True Color (24-bit) and italics with alacritty + tmux + vim (neovim)][github-gist-andersevenrud-alacritty-tmux-vim-truecolor] where I found great wisdom how to adjust my terminal, especially when used alacritty, tmux & neovim.
 
 ### Fallback theme name
 
@@ -61,15 +47,11 @@ has been added to indicate used palette.
 | :----: | :-------: |
 | `dark` | `dark256` |
 
-Continuing topic of introducing 16-bit colors, we have make slight change in
-fallback theme name. We love idea adding new colors to our theme, although
-during those changes we cannot forget about users whose terminals might not
-support more then basic 256 colors. Therefore the fallback theme name also has
-to be adapted and in v2 it's `dark256`.
+Continuing topic of introducing 16-bit colors, we have make slight change in fallback theme name. We love idea adding new colors to our theme, although during those changes we cannot forget about users whose terminals might not support more then basic 256 colors. Therefore the fallback theme name also has to be adapted and in v2 it's `dark256`.
 
 ## FAQ
 
-### Plugin not upgrading automaticaly with tmux update
+### Plugin not upgrading automatically with tmux update
 
 Error ([source](https://github.com/egel/tmux-gruvbox/issues/21#issuecomment-2373794273)):
 
