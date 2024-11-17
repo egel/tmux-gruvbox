@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [v2.0.0]
+
+### Added
+
 - Added light and dark transparent themes [#18](https://github.com/egel/tmux-gruvbox/issues/18)
 - Added editorconfig
 - Added code linters for shellcheck & shfmt [#33](https://github.com/egel/tmux-gruvbox/issues/33)
@@ -56,3 +70,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]: https://github.com/egel/tmux-gruvbox/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/egel/tmux-gruvbox/compare/v0.0.0...v1.0.0
+[1.1.0]: https://github.com/egel/tmux-gruvbox/compare/v1.0.0...v1.1.0
+[2.0.0]: https://github.com/egel/tmux-gruvbox/compare/v1.1.0...v2.0.0
