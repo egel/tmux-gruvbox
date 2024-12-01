@@ -9,10 +9,29 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+- Reduce repo weight by removing unused images [#41](https://github.com/egel/tmux-gruvbox/issues/41)
+
+### Fixed
+
+### Security
+
+## [v2.0.0]
+
+### Added
+
 - Added light and dark transparent themes [#18](https://github.com/egel/tmux-gruvbox/issues/18)
 - Added editorconfig
 - Added code linters for shellcheck & shfmt [#33](https://github.com/egel/tmux-gruvbox/issues/33)
 - Added tests (for linux) [#39](https://github.com/egel/tmux-gruvbox/issues/39)
+- Added customizable statusbar [#31](https://github.com/egel/tmux-gruvbox/issues/31)
+- Added support for 16-bit colors palette light & dark [#34](https://github.com/egel/tmux-gruvbox/issues/34)
+- Added migration guide v1 to v2 [#44](https://github.com/egel/tmux-gruvbox/issues/44)
 
 ### Changed
 
@@ -25,6 +44,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Fixed incorrect spacings in template file
+- Improved README with more examples
+- Reduced repo size by outsource images to external platform [#36](https://github.com/egel/tmux-gruvbox/issues/36)
 
 ### Security
 
@@ -51,3 +72,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [Unreleased]: https://github.com/egel/tmux-gruvbox/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/egel/tmux-gruvbox/compare/v0.0.0...v1.0.0
+[1.1.0]: https://github.com/egel/tmux-gruvbox/compare/v1.0.0...v1.1.0
+[2.0.0]: https://github.com/egel/tmux-gruvbox/compare/v1.1.0...v2.0.0
