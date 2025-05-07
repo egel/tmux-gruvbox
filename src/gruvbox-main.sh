@@ -4,7 +4,7 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly CURRENT_DIR
 
 # hold the array of all command to configure tmux theme
-declate -a TMUX_CMDS
+declare -a TMUX_CMDS
 
 # load libraries
 # shellcheck disable=1091
