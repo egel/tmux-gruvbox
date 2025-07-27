@@ -60,7 +60,7 @@ theme_set_dark() {
   tmux_append_seto "status-right-length" "80"
   tmux_append_setwo "window-status-separator" ""
 
-  tmux_append_seto "status-left" "#[bg=${col_bg3},fg=${col_fg3}] ${_left_status_a} #[bg=${col_bg1},fg=${col_bg3},nobold,noitalics,nounderscore]"
+  tmux_append_seto "status-left" "#{?client_prefix,#[bg=${col_orange2}],#[bg=${col_bg3}]}#[fg=${col_fg3}] ${_left_status_a} #[bg=${col_bg1}]#{?client_prefix,#[fg=${col_orange2}],#[fg=${col_bg3}]}#[nobold,noitalics,nounderscore]"
 
   # right status
   local _status_right_bg=${col_bg1}
@@ -70,10 +70,10 @@ theme_set_dark() {
   # current window
   local _current_window_status_format_bg=${col_bg1}
   if [[ "$_statusbar_alpha" == "true" ]]; then _current_window_status_format_bg="default"; fi
-  tmux_append_setwo "window-status-current-format" "#[bg=${col_yellow2},fg=${col_bg1},nobold,noitalics,nounderscore]#[bg=${col_yellow2},fg=${col_bg2}] #I #[bg=${col_yellow2},fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #{?window_end_flag,#[bg=${_current_window_status_format_bg}],#[bg=${col_bg1}]}#[fg=${col_yellow2},nobold,noitalics,nounderscore]"
+  tmux_append_setwo "window-status-current-format" "#{?window_marked_flag,#[bg=${col_orange2}],#[bg=${col_yellow2}]}#[fg=${col_bg1},nobold,noitalics,nounderscore]#{?window_marked_flag,#[bg=${col_orange2}],#[bg=${col_yellow2}]}#[fg=${col_bg2}] #I #{?window_marked_flag,#[bg=${col_orange2}],#[bg=${col_yellow2}]}#[fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #{?window_end_flag,#[bg=${_current_window_status_format_bg}],#[bg=${col_bg1}]}#{?window_marked_flag,#[fg=${col_orange2}],#[fg=${col_yellow2}]}#[nobold,noitalics,nounderscore]"
 
   # default window
   local _default_window_status_format_bg=${col_bg1}
   if [[ "$_statusbar_alpha" == "true" ]]; then _default_window_status_format_bg="default"; fi
-  tmux_append_setwo "window-status-format" "#[bg=${col_bg2},fg=${col_bg1},noitalics]#[bg=${col_bg2},fg=${col_fg1}] #I #[bg=${col_bg2},fg=${col_fg1}] #W #{?window_end_flag,#[bg=${_default_window_status_format_bg}],#[bg=${col_bg1}]}#[fg=${col_bg2},noitalics]"
+  tmux_append_setwo "window-status-format" "#{?window_marked_flag,#[bg=${col_orange2}],#[bg=${col_bg2}]}#[fg=${col_bg1},noitalics]#{?window_marked_flag,#[bg=${col_orange2}],#[bg=${col_bg2}]}#[fg=${col_fg1}] #I #{?window_marked_flag,#[bg=${col_orange2}],#[bg=${col_bg2}]}#[fg=${col_fg1}] #W #{?window_end_flag,#[bg=${_default_window_status_format_bg}],#[bg=${col_bg1}]}#{?window_marked_flag,#[fg=${col_orange2}],#[fg=${col_bg2}]}#[noitalics]"
 }
