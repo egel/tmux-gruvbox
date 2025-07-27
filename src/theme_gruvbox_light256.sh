@@ -60,7 +60,7 @@ theme_set_light256() {
   tmux_append_seto "status-right-length" "80"
   tmux_append_setwo "window-status-separator" ""
 
-  tmux_append_seto "status-left" "#{?client_prefix,#[bg=${col_orange2}],#[bg=${col_fg2}]}#[fg=${col_bg1}] ${_left_status_a} #[bg=${col_bg2}]#{?client_prefix,#[fg=${col_orange2}],#[fg=${col_fg2}]}#[nobold,noitalics,nounderscore]"
+  tmux_append_seto "status-left" "#{?client_prefix,#[bg=${col_green}],#[bg=${col_fg2}]}#[fg=${col_bg1}] ${_left_status_a} #[bg=${col_bg2}]#{?client_prefix,#[fg=${col_green}],#[fg=${col_fg2}]}#[nobold,noitalics,nounderscore]"
 
   # right status
   local _status_right_bg=${col_bg2}
