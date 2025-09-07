@@ -12,6 +12,9 @@ theme_set_light() {
   _right_status_z=$4
   _statusbar_alpha=$5
 
+  # Color to use to indicate that synchronize-panes is enabled
+  local _sync_color=${col_red}
+
   tmux_append_seto "status" "on"
 
   # default statusbar bg color
@@ -33,7 +36,7 @@ theme_set_light() {
   tmux_append_setwo "window-status-current-style" "bg=${_active_window_title_bg},fg=${col_bg1}" # TODO cosider removing red!
 
   # pane border
-  tmux_append_seto "pane-active-border-style" "fg=${col_fg2}"
+  tmux_append_seto "pane-active-border-style" "#{?pane_synchronized,fg=${_sync_color},fg=${col_fg2}}"
   tmux_append_seto "pane-border-style" "fg=${col_bg1}"
 
   # message infos
@@ -69,8 +72,10 @@ theme_set_light() {
 
   # current window
   local _current_window_status_format_bg=${col_bg1}
+  local _current_window_status_primary_bg="#{?pane_synchronized,bg=${_sync_color},bg=${col_yellow2}}"
+  local _current_window_status_primary_fg="#{?pane_synchronized,fg=${_sync_color},fg=${col_yellow2}}"
   if [[ "$_statusbar_alpha" == "true" ]]; then _current_window_status_format_bg="default"; fi
-  tmux_append_setwo "window-status-current-format" "#[bg=${col_yellow2},fg=${col_bg1},nobold,noitalics,nounderscore]#[bg=${col_yellow2},fg=${col_bg2}] #I #[bg=${col_yellow2},fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #{?window_end_flag,#[bg=${_current_window_status_format_bg}],#[bg=${col_bg1}]}#[fg=${col_yellow2},nobold,noitalics,nounderscore]"
+  tmux_append_setwo "window-status-current-format" "#[${_current_window_status_primary_bg},fg=${col_bg1},nobold,noitalics,nounderscore]#[${_current_window_status_primary_bg},fg=${col_bg2}] #I #[${_current_window_status_primary_bg},fg=${col_bg2},bold] #W#{?window_zoomed_flag,*Z,} #{?window_end_flag,#[bg=${_current_window_status_format_bg}],#[bg=${col_bg1}]}#[${_current_window_status_primary_fg},nobold,noitalics,nounderscore]"
 
   # default window
   local _default_window_status_format_bg=${col_bg1}
