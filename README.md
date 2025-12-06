@@ -66,7 +66,7 @@ Hit `prefix + I` to fetch the plugin and source it. Your Tmux should be updated 
     ```bash
     # ~/.tmux.conf
 
-    run ~/projects/tmux-gruvbox/tmux-gruvbox.tmux
+    run ~/projects/tmux-gruvbox/gruvbox-tpm.tmux
     # set desired options...
     set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
     ```
