@@ -18,6 +18,7 @@ readonly TMUX_GRUVBOX_LEFT_STATUS_A="@tmux-gruvbox-left-status-a"
 readonly TMUX_GRUVBOX_RIGHT_STAUTS_X="@tmux-gruvbox-right-status-x"
 readonly TMUX_GRUVBOX_RIGHT_STAUTS_Y="@tmux-gruvbox-right-status-y"
 readonly TMUX_GRUVBOX_RIGHT_STAUTS_Z="@tmux-gruvbox-right-status-z"
+readonly TMUX_GRUVBOX_HIDE_WINDOW_NAME="@tmux-gruvbox-hide-window-name"
 
 # define simple theme options (no color interpolation required)
 readonly DEFAULT_THEME="dark256"
@@ -27,6 +28,7 @@ readonly DEFAULT_LEFT_STATUS_A='#S'
 readonly DEFAULT_RIGHT_STATUS_X='%Y-%m-%d'
 readonly DEFAULT_RIGHT_STATUS_Y='%H:%M'
 readonly DEFAULT_RIGHT_STATUS_Z='#h'
+readonly DEFAULT_HIDE_WINDOW_NAME='false'
 
 main() {
   TMUX_CMDS=() # clear
@@ -68,6 +70,7 @@ main() {
   _status_right_x=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_X" "$DEFAULT_RIGHT_STATUS_X")
   _status_right_y=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_Y" "$DEFAULT_RIGHT_STATUS_Y")
   _status_right_z=$(tmux_get_option "$TMUX_GRUVBOX_RIGHT_STAUTS_Z" "$DEFAULT_RIGHT_STATUS_Z")
+  _hide_window_name=$(tmux_get_option "$TMUX_GRUVBOX_HIDE_WINDOW_NAME" "$DEFAULT_HIDE_WINDOW_NAME")
 
   local _theme_args
   _theme_args=(
@@ -76,6 +79,7 @@ main() {
     "$_status_right_y"
     "$_status_right_z"
     "$_statusbar_alpha"
+    "$_hide_window_name"
   )
 
   case $_theme in

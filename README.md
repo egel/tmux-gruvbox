@@ -165,6 +165,14 @@ This section is customizable for user, and by default contains hostname.
 set -g @tmux-gruvbox-right-status-z '#h #{tmux_mode_indicator}'
 ```
 
+### Hide window name
+
+- default value: `'false'`
+
+```bash
+set -g @tmux-gruvbox-hide-window-name 'true'
+```
+
 > [!TIP]
 > Make sure the themes' settings are defined before all other plugins,
 > otherwise content from external plugins may not be displayed correctly by
